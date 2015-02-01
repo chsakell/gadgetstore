@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="gadgetsStore">
+<head>
+    <title>Gadget Store</title>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/loading-bar.css" rel="stylesheet" />
+</head>
+<body ng-controller='gadgetStoreCtrl' class="container">
+    <div class="navbar navbar-default" role="navigation" ng-hide="checkoutComplete()">
+        <a class="navbar-brand" href="#">Gadgets</a>
+        <div class="col-sm-6 col-md-6" ng-show="showFilter()">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control input-group-lg" placeholder="Filter gadgets.." ng-model="searchItem">
+                </div>
+            </form>
+        </div>
+        <cart-details></cart-details>
+    </div>
+    <div class="alert alert-danger" ng-show="data.error" ng-cloak>
+        Error ({{data.error.status}}). Gadget's weren't not loaded.
+        <a href="#" class="alert-link">Click here to try again</a>
+    </div>
+    <ng-view />
+    <script src="../../Scripts/angular.js" type="text/javascript"></script>
+    <script src="../../Scripts/angular-route.js" type="text/javascript"></script>
+    <script src="~/Scripts/loading-bar.js"></script>
+    <script src="~/app/mainApp.js"></script>
+    <script src="../../app/controllers/gadgetsStore.js" type="text/javascript"></script>
+    <script src="../../app/filters/storeFilters.js" type="text/javascript"></script>
+    <script src="../../app/controllers/gadgetsControllers.js" type="text/javascript"></script>
+    <script src="../../app/components/cartCmp.js" type="text/javascript"></script>
+    <script src="../../app/controllers/checkoutController.js" type="text/javascript"></script>
+</body>
+</html>

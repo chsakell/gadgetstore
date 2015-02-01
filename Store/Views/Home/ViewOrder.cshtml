@@ -1,0 +1,37 @@
+﻿@model Domain.Order
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Order Details</title>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="label label-success">@Model.CompanyName</span> |
+                <span class="label label-success">@Model.OwnerName</span> |
+                <span class="label label-success">@Model.Street</span> |
+                <span class="label label-success">@Model.City</span> |
+                <span class="label label-success">@Model.Zip</span> |
+                <span class="label label-success">@Model.Country</span>
+            </div>
+                <h4>Order's gadgets</h4>
+                @foreach (var gadget in Model.Gadgets.Distinct())
+                {
+                    @Html.Partial("Order", gadget)
+                }
+            <div class="panel-footer">
+                @Html.ActionLink("Back to gadgets", "Index")
+            </div>
+        </div>
+    </div>
+</body>
+</html>

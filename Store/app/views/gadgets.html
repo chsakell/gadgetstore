@@ -1,0 +1,40 @@
+﻿<div class="" ng-controller="gadgetsCtrl" ng-hide="data.error">
+    <div class="col-xs-3">
+        <a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
+        <a ng-repeat="item in data.categories | orderBy:'CategoryID'" ng-click="selectCategory(item.CategoryID)"
+           class=" btn btn-block btn-default btn-lg" ng-class="getCategoryClass(item.CategoryID)">
+            {{item.Name}}
+        </a>
+    </div>
+    <div class="col-xs-9">
+        <div class="panel panel-default" ng-repeat="item in data.gadgets | filter:categoryFilterFn | filter:searchItem | range:selectedPage:pageSize">
+            <div class="panel-heading">
+                <strong>{{item.Name}}</strong>
+                <span class="pull-right label label-primary">
+                    {{item.Price | currency}}
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" ng-src="../../images/{{item.Image}}" />
+                    </a>
+                    <div class="media-body">
+                        <span class="lead">{{item.Description}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a ng-click="addProductToCart(item)" class="btn btn-success">
+                    Add to cart
+                </a>
+            </div>
+        </div>
+        <div class="pull-right btn-group">
+            <a ng-repeat="page in data.gadgets | filter:categoryFilterFn | filter:searchItem | pageCount:pageSize"
+               ng-click="selectPage($index + 1)" class="btn btn-default" ng-class="getPageClass($index + 1)">
+                {{$index + 1}}
+            </a>
+        </div>
+    </div>
+</div>

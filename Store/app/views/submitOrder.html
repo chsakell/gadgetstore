@@ -1,0 +1,67 @@
+﻿<style>
+    .ng-invalid {
+        border-color: brown;
+    }
+
+    .ng-valid {
+        border-color: lightgreen;
+    }
+
+    span.error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<h2>
+    Check out
+</h2>
+<p>
+    Enter your shipping details below, and we'll ship your goods as far as possible!
+</p>
+<form name="shippingForm" novalidate>
+    <div class="well col-md-6">
+        <div class="form-group">
+            <input name="companyName" class="form-control" ng-model="data.shipping.CompanyName" required placeholder="Company Name" />
+            <span class="error" ng-show="shippingForm.companyName.$error.required">
+                Please enter your Company
+            </span>
+        </div>
+        <div class="form-group">
+            <input name="name" class="form-control" ng-model="data.shipping.OwnerName" required placeholder="Full Name" />
+            <span class="error" ng-show="shippingForm.name.$error.required">
+                Please enter your Full Name
+            </span>
+        </div>
+
+        <div class="form-group">
+            <input name="street" class="form-control" ng-model="data.shipping.Street" placeholder="Shippping Address" required />
+            <span class="error" ng-show="shippingForm.street.$error.required">
+                Please enter a street
+                address
+            </span>
+        </div>
+        <div class="form-group">
+            <input name="city" class="form-control" ng-model="data.shipping.City" placeholder="City" required />
+            <span class="error" ng-show="shippingForm.city.$error.required">
+                Please enter a city
+            </span>
+        </div>
+        <div class="form-group">
+            <input name="zip" class="form-control" ng-model="data.shipping.Zip" placeholder="Zip" required />
+            <span class="error" ng-show="shippingForm.zip.$error.required">
+                Please enter a zip code
+            </span>
+        </div>
+        <div class="form-group">
+            <input name="country" class="form-control" ng-model="data.shipping.Country" placeholder="Country" required />
+            <span class="error" ng-show="shippingForm.country.$error.required">
+                Please enter a country
+            </span>
+        </div>
+        <div class="text-center">
+            <button ng-disabled="shippingForm.$invalid" class="btn btn-primary pull-left" ng-click="sendOrder(data.shipping)">
+                Complete order
+            </button>
+        </div>
+    </div>
+</form>

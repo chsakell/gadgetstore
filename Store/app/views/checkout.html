@@ -1,0 +1,65 @@
+﻿<h2>
+    Your cart
+</h2>
+<div ng-controller="cartDetailsController">
+    <div class="alert alert-warning" ng-show="cartData.length == 0">
+        There are no gadgets in your shopping cart. <a href="#" class="alert-link">
+            Click here to return to the catalogue
+        </a>
+    </div>
+    <div ng-hide="cartData.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Item
+                    </th>
+                    <th class="text-right">
+                        Price
+                    </th>
+                    <th class="text-right">
+                        Subtotal
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in cartData">
+                    <td class="text-center">
+                        {{item.count}}
+                    </td>
+                    <td class="text-left">
+                        {{item.Name}}
+                    </td>
+                    <td class="text-right">
+                        {{item.Price | currency}}
+                    </td>
+                    <td class="text-right">
+                        {{ (item.Price * item.count) | currency}}
+                    </td>
+                    <td>
+                        <button ng-click="remove(item.GadgetID)" class="btn btn-sm btn-warning pull-right">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">
+                        Total:
+                    </td>
+                    <td class="text-right">
+                        {{total() | currency}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center pull-right">
+            <a class="btn btn-primary" href="#">Continue shopping</a>
+            <a class="btn btn-primary" href="#/submitorder">Place order now</a>
+        </div>
+    </div>
+</div>
