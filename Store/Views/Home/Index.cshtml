@@ -8,7 +8,7 @@
     <link href="../../Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/loading-bar.css" rel="stylesheet" />
 </head>
-<body ng-controller='gadgetStoreCtrl' class="container">
+<body ng-controller='gadgetStoreCtrl' class="container" ng-init="checkSessionGadgets()">
     <div class="navbar navbar-default" role="navigation" ng-hide="checkoutComplete()">
         <a class="navbar-brand" href="#">Gadgets</a>
         <div class="col-sm-6 col-md-6" ng-show="showFilter()">

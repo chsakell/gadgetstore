@@ -30,5 +30,6 @@
 
     $scope.addProductToCart = function (product) {
         cart.addProduct(product.GadgetID, product.Name, product.Price, product.CategoryID);
+        $scope.saveOrder();
     }
 });

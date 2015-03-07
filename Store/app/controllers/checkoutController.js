@@ -13,5 +13,6 @@
 
     $scope.remove = function (id) {
         cart.removeProduct(id);
+        $scope.saveOrder();
     }
 });

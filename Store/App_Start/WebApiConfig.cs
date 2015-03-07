@@ -14,11 +14,14 @@ namespace Store
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // Moved to RouteConfig.cs to enable Session
+            /*
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+             */
         }
     }
 }

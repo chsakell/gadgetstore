@@ -29,6 +29,11 @@ storeCart.factory('cart', function () {
         },
         getProducts: function () {
             return cartData;
+        },
+        pushItem: function (item) {
+            cartData.push({
+                count: item.Count, GadgetID: item.GadgetID, Price: item.Price, Name: item.Name, CategoryID: item.CategoryID
+            });
         }
     };
 });
